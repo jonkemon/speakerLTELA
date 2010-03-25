@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Canvas xmlns:mx="http://www.adobe.com/2006/mxml" 
+		height="100%" 
+		width="100%" 
+		paddingTop="5"
+		paddingBottom="5"
+		horizontalScrollPolicy="off" 
+		verticalScrollPolicy="off" 
+		y="0" 
+		autoLayout="false"
+		xmlns:ui="com.telecoms.media.speakerLTELA.view.ui.*">
+<mx:Script>
+	<![CDATA[
+		import mx.events.FlexEvent;
+		import com.telecoms.media.speakerLTELA.control.events.speaker.SpeakerNumberUpdateEvent;
+		import mx.events.EffectEvent;
+ 		import com.telecoms.media.speakerLTELA.model.speakerModelLocator;
+		import mx.events.ListEvent;
+		import com.telecoms.media.speakerLTELA.control.events.speaker.LoadSpeakerEvent;
+		import flash.external.*;
+		
+		[Bindable]
+		public var model:speakerModelLocator = speakerModelLocator.getInstance();
+		
+		// Load Image data
+		public function loadXML():void
+		{
+			var event:LoadSpeakerEvent=null;
+			event=new LoadSpeakerEvent();
+			event.dispatch();
+		}
+		
+		private function moveToCenter(event:Event):void
+		{
+			customAnimation.addEventListener(EffectEvent.EFFECT_END, moveToCenter);
+			customAnimation.play();
+			
+			var eventSpUpdate:SpeakerNumberUpdateEvent=null;
+			eventSpUpdate=new SpeakerNumberUpdateEvent();
+			eventSpUpdate.dispatch();
+		}
+	]]>
+</mx:Script>
+	<mx:List dataProvider="{model.speakerList}" visible="false" id="dataLoaded"/>
+	<mx:Sequence id="customAnimation" target="{speakerContainer}">
+		<mx:AnimateProperty id="moveRight" property="x" toValue="15" duration="2000"/>
+		<mx:Pause id="pauseCentral" duration="2000"/>
+		<mx:AnimateProperty id="moveDown" property="y" fromValue="10" toValue="100" duration="1500"/>
+		<mx:AnimateProperty id="moveBackToStartX" property="x" fromValue="15" toValue="-300" duration="0"/>
+		<mx:AnimateProperty id="moveBackToStartY" property="y" fromValue="100" toValue="10" duration="0"/>	
+	</mx:Sequence>
+
+	<mx:HBox id="speakerContainer" y="10" x="-300" horizontalScrollPolicy="off" verticalScrollPolicy="off">
+		<mx:VBox paddingRight="10" width="215">
+			<mx:Label text="{model.speakerList.speaker[model.spkNum].name}" fontSize="10" id="speakerName" />
+			<mx:Label text="{model.speakerList.speaker[model.spkNum].title}" fontSize="10" />
+			<mx:Label text="{model.speakerList.speaker[model.spkNum].company}" fontSize="10" />
+		</mx:VBox>
+		<mx:Image source="{model.speakerList.speaker[model.spkNum].imgurl}" width="65"/>
+	</mx:HBox>
+
+</mx:Canvas>

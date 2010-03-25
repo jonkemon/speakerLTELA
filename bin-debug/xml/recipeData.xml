@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<content>
+	<recipe id="1">
+	    <dish>Salmon a la Boo</dish>
+	</recipe>
+	<recipe id="2">
+	    <dish>Chilli Pasta</dish>
+	</recipe>
+	<recipe id="3">
+	    <dish>Chorizo Stew</dish>
+	</recipe>
+	<recipe id="4">
+	    <dish>Rabbit Pie</dish>
+	</recipe>
+	<recipe id="5">
+	    <dish>Guineafawl Surprise</dish>
+	</recipe>	
+</content>
