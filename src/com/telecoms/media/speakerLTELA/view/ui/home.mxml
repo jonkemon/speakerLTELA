@@ -35,19 +35,21 @@
 		private function init(event:Event):void
 		{
 			cw.unwatch();
+			speakerPic.source = model.speakerList.speaker[0].imgurl;
 			customAnimation.play();
 			customAnimation.addEventListener(EffectEvent.EFFECT_END, moveToCenter);
 		}
 				
 		private function moveToCenter(event:Event):void
 		{
-			cw.unwatch();
 			customAnimation.addEventListener(EffectEvent.EFFECT_END, moveToCenter);
 			customAnimation.play();
 			
 			var eventSpUpdate:SpeakerNumberUpdateEvent=null;
 			eventSpUpdate=new SpeakerNumberUpdateEvent();
 			eventSpUpdate.dispatch();
+			
+			speakerPic.source = model.speakerList.speaker[model.spkNum].imgurl;
 		}
 	]]>
 </mx:Script>
@@ -66,7 +68,7 @@
 			<mx:Label text="{model.speakerList.speaker[model.spkNum].title}" fontSize="10" color="#333333" />
 			<mx:Label text="{model.speakerList.speaker[model.spkNum].company}" fontSize="10" color="#333333" fontStyle="italic" />
 		</mx:VBox>
-		<mx:Image source="{model.speakerList.speaker[model.spkNum].imgurl}" width="65" minHeight="68"/>
+		<ui:BorderedImage id="speakerPic" borderColor="#CCCCCC" borderThickness="1" source="http://squiz.informatm.com/__data/assets/image/0015/205080/Edmundo_Poggio1.jpg" width="65"/>
 	</mx:HBox>
 
 </mx:Canvas>

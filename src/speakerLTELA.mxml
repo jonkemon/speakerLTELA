@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="vertical" height="86" width="322"
 	paddingTop="0" paddingRight="0" paddingBottom="0"
-	paddingLeft="0" backgroundImage="../images/lte_spker_bg.png" creationComplete="speakerGallery.loadXML()">
+	paddingLeft="0" backgroundImage="http://media2.telecoms.com/loader_flash/speakersLTELA/images/lte_spker_bg.png" creationComplete="speakerGallery.loadXML()">
 	<control:PTController xmlns:control="com.telecoms.media.speakerLTELA.control.*"/>
 	<rds:Services xmlns:rds="com.telecoms.media.speakerLTELA.business.*"/>
 	<speaker:home xmlns:speaker="com.telecoms.media.speakerLTELA.view.ui.*" id="speakerGallery"/>
