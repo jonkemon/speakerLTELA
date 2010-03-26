@@ -15,14 +15,12 @@ package com.telecoms.media.speakerLTELA.control.command
 		private var model:speakerModelLocator = speakerModelLocator.getInstance();
 		public function execute(event:CairngormEvent):void
 		{
-			trace(model.spkNum);
-			trace(model.speakerList.speaker.length());
-			if(model.spkNum==model.speakerList.speaker.length())
+			if(model.spkNum+1==model.speakerList.speaker.length())
 				{
 					model.spkNum = 0;
 				}
 			else{
-			++model.spkNum;
+			model.spkNum++;
 			}
 		}
 	}

@@ -27,10 +27,6 @@ package com.telecoms.media.speakerLTELA.control.command
 		private function onResults(event:ResultEvent):void
 		{
 			model.speakerList = event.token.result as XML;
-
-			var eventSpkLd:SpeakerLoadedEvent=null;
-			eventSpkLd=new SpeakerLoadedEvent();
-			eventSpkLd.dispatch();
 		}
 	}
 }
